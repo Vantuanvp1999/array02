@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3>Carogame</h3>
+<p id="caroGame"></p>
+<button onclick="changeValue()">Change value</button>
+<script>
+  let b =document.getElementById("caroGame");
+
+  let board = [];
+  let data = "";
+  let h =1;
+  for(let i=0;i<5;i++){
+    board[i] = new Array('(.)','(.)','(.)','(.)','(.)');
+  }
+  for(let i=0;i<5;i++){
+    data+="<br>";
+    for(let j=0;j<5;j++){
+      data+= board[i][j]+"&nbsp &nbsp";
+    }
+  }b.innerHTML = data;
+  function changeValue(){
+  let data = "";
+  let positionX =parseInt(prompt("Enter X position"));
+  let positionY = parseInt(prompt("Enter Y position"));
+  if(h%2==0){
+   board[positionX][positionY] = 'x';
+  }else {
+    board[positionX][positionY] = '0';
+  }
+  h++;
+    for(let i=0;i<5;i++){
+      data+="<br>";
+      for(let j=0;j<5;j++){
+        data+= board[i][j]+"&nbsp &nbsp";
+      }}
+    b.innerHTML = data;
+  }
+  for(let i=0;i<5;i++){
+    for(let j=0;j<5;j++){
+      if(board[i][j]=='0'&&board[i+1][j]=='0'&&board[i+2][j]=='0'||
+        board[i][j]=='0'&&board[i][j+1]=='0'&&board[i][j+2]=='0'){
+        alert("0 thắng");
+      }else if (board[i][j]=='x'&&board[i+1][j]=='x'&&board[i+2][j]=='x'||
+        board[i][j]=='x'&&board[i][j+1]=='x'&&board[i][j+2]=='x'){
+        alert("x thắng");
+      }
+    }
+  }
+</script>
+</body>
+</html>
